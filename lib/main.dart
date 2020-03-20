@@ -28,7 +28,7 @@ class LocalizationSupport extends StatelessWidget {
         const Locale('hi'),
         const Locale('ar'),
       ],
-      locale: const Locale('ar'),
+      locale: const Locale('zh'), 
       debugShowCheckedModeBanner: false,
       home: CustomStringLocale(),
     );
@@ -72,7 +72,7 @@ _AppointmentDataSource _getCalendarDataSource() {
   appointments.add(Appointment(
     startTime: DateTime.now(),
     endTime: DateTime.now().add(Duration(minutes: 10)),
-    subject: 'Meeting',
+    subject: '会议',
     color: Colors.blue,
     startTimeZone: '',
     endTimeZone: '',
