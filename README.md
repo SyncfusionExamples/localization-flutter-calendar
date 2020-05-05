@@ -131,3 +131,12 @@ class _AppointmentDataSource extends CalendarDataSource {
   }
 }
 ```
+**[View document in Syncfusion Flutter Knowledge base](https://www.syncfusion.com/kb/11246/how-to-localize-the-flutter-event-calendar-sfcalendar)**
+
+**Screenshots**
+
+![No events text](http://www.syncfusion.com/uploads/user/kb/flut/flut-788/flut-788_img1.jpeg)
+
+![Selected date text](http://www.syncfusion.com/uploads/user/kb/flut/flut-788/flut-788_img2.jpeg)
+
+![Appointment text](http://www.syncfusion.com/uploads/user/kb/flut/flut-788/flut-788_img3.jpeg)
