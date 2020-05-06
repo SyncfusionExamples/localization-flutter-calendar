@@ -135,8 +135,6 @@ class _AppointmentDataSource extends CalendarDataSource {
 
 **Screenshots**
 
-![No events text](http://www.syncfusion.com/uploads/user/kb/flut/flut-788/flut-788_img1.jpeg)
-
-![Selected date text](http://www.syncfusion.com/uploads/user/kb/flut/flut-788/flut-788_img2.jpeg)
-
-![Appointment text](http://www.syncfusion.com/uploads/user/kb/flut/flut-788/flut-788_img3.jpeg)
+<img alt="No events text"  src="http://www.syncfusion.com/uploads/user/kb/flut/flut-788/flut-788_img1.jpeg" width="250" height="400" />|
+<img alt="Selected date text"  src="http://www.syncfusion.com/uploads/user/kb/flut/flut-788/flut-788_img2.jpeg" width="250" height="400" />|
+<img alt="Appointment text"  src="http://www.syncfusion.com/uploads/user/kb/flut/flut-788/flut-788_img3.jpeg" width="250" height="400" />|
