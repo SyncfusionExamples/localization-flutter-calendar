@@ -1,77 +1,98 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
-import 'package:syncfusion_localizations/syncfusion_localizations.dart';
 
-void main() => runApp(LocalizationSupport());
+void main() => runApp(WorkingDirection());
 
-class LocalizationSupport extends StatelessWidget {
+class WorkingDirection extends StatelessWidget {
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      localizationsDelegates: [
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        SfGlobalLocalizations.delegate,
-      ],
-      supportedLocales: [
-        const Locale('en'),
-        const Locale('zh'),
-        const Locale('he'),
-        const Locale('ru'),
-        const Locale('fr', 'BE'),
-        const Locale('fr', 'CA'),
-        const Locale('ja'),
-        const Locale('de'),
-        const Locale('hi'),
-        const Locale('ar'),
-      ],
-      locale: const Locale('zh'),
       debugShowCheckedModeBanner: false,
-      home: CustomStringLocale(),
+      title: 'Flutter Demo',
+      home: CalendarDirection(),
     );
   }
 }
 
-class CustomStringLocale extends StatefulWidget {
+class CalendarDirection extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() => ScheduleExample();
+  State<StatefulWidget> createState() => _CalendarDirectionState();
 }
 
-class ScheduleExample extends State<CustomStringLocale> {
+List<String> views = <String>[
+  'Day',
+  'Week',
+  'WorkWeek',
+  'Month',
+  'Timeline Day',
+  'Timeline Week',
+  'Timeline WorkWeek'
+];
+
+class _CalendarDirectionState extends State<CalendarDirection> {
+
 
   @override
   Widget build(BuildContext context) {
-    return (Scaffold(
-      body:SafeArea(
-        child: SfCalendar(
-          view: CalendarView.month,
-          monthViewSettings: MonthViewSettings(showAgenda: true),
-          dataSource: _getCalendarDataSource(),
+    return Scaffold(
+        appBar: AppBar(
         ),
-      ),
+        body: Directionality(
+          textDirection: TextDirection.rtl,
+          child: Scaffold(
+            body: SfCalendar(
+              view:  CalendarView.week,
+              dataSource: getCalendarDataSource(),
+              monthViewSettings: MonthViewSettings(showAgenda: true),
+            ),
+          ),
+        ));
+  }
+
+  _DataSource getCalendarDataSource() {
+    final List<Appointment> appointments = <Appointment>[];
+    appointments.add(Appointment(
+      startTime: DateTime.now(),
+      endTime: DateTime.now().add(const Duration(hours: 1)),
+      subject: 'Meeting',
+      color: Colors.pink,
+      isAllDay: true,
     ));
+    appointments.add(Appointment(
+      startTime: DateTime.now().add(const Duration(hours: 4, days: -1)),
+      endTime: DateTime.now().add(const Duration(hours: 5, days: -1)),
+      subject: 'Release Meeting',
+      color: Colors.lightBlueAccent,
+    ));
+    appointments.add(Appointment(
+      startTime: DateTime.now().add(const Duration(hours: 2, days: -2)),
+      endTime: DateTime.now().add(const Duration(hours: 4, days: -2)),
+      subject: 'Performance check',
+      color: Colors.amber,
+    ));
+    appointments.add(Appointment(
+      startTime: DateTime.now().add(const Duration(hours: 6, days: -3)),
+      endTime: DateTime.now().add(const Duration(hours: 7, days: -3)),
+      subject: 'Support',
+      color: Colors.green,
+    ));
+    appointments.add(Appointment(
+      startTime: DateTime.now().add(const Duration(hours: 6, days: 2)),
+      endTime: DateTime.now().add(const Duration(hours: 7, days: 2)),
+      subject: 'Retrospective',
+      color: Colors.purple,
+    ));
+
+    return _DataSource(appointments);
   }
 }
 
-_AppointmentDataSource _getCalendarDataSource() {
-  List<Appointment> appointments = <Appointment>[];
-  appointments.add(Appointment(
-    startTime: DateTime.now(),
-    endTime: DateTime.now().add(Duration(minutes: 10)),
-    subject: '会议',
-    color: Colors.blue,
-    startTimeZone: '',
-    endTimeZone: '',
-  ));
+class _DataSource extends CalendarDataSource {
+  _DataSource(this.source);
 
-  return _AppointmentDataSource(appointments);
-}
+  List<Appointment> source;
 
-class _AppointmentDataSource extends CalendarDataSource {
-  _AppointmentDataSource(List<Appointment> source) {
-    appointments = source;
-  }
+  @override
+  List<dynamic> get appointments => source;
 }
