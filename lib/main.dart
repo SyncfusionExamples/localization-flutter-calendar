@@ -14,7 +14,7 @@ class LocalizationSupport extends StatelessWidget {
       localizationsDelegates: [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
-          SfGlobalLocalizations.delegate,
+        SfGlobalLocalizations.delegate,
       ],
       supportedLocales: [
         const Locale('en'),
@@ -28,7 +28,7 @@ class LocalizationSupport extends StatelessWidget {
         const Locale('hi'),
         const Locale('ar'),
       ],
-      locale: const Locale('zh'), 
+      locale: const Locale('zh'),
       debugShowCheckedModeBanner: false,
       home: CustomStringLocale(),
     );
@@ -41,27 +41,16 @@ class CustomStringLocale extends StatefulWidget {
 }
 
 class ScheduleExample extends State<CustomStringLocale> {
-  CalendarView _calendarView;
-
-  @override
-  void initState() {
-    _calendarView = CalendarView.month;
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
     return (Scaffold(
-      body: Column(
-        children: <Widget>[
-          Expanded(
-            child: SfCalendar(
-              view: _calendarView,
-              monthViewSettings: MonthViewSettings(showAgenda: true),
-              dataSource: _getCalendarDataSource(),
-            ),
-          ),
-        ],
+      body: SafeArea(
+        child: SfCalendar(
+          view: CalendarView.month,
+          monthViewSettings: MonthViewSettings(showAgenda: true),
+          dataSource: _getCalendarDataSource(),
+        ),
       ),
     ));
   }
