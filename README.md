@@ -4,7 +4,7 @@ A quick-start example to help you to localize the Flutter Calendar.
 
 You can change the locale of the flutter calendar and custom strings in the Flutter Event Calendar by using the 'locale' property of the MaterialApp widget.
 
-In this example, the custom strings (NoEvents, NoSelectedDate) have been localised using the 'SfGlobalLocalizations.delegate' in the 'localizationsDelegate'. For localization, you need to add the supported locales to an array and using any one of the supported locales, you can set the locale for the calendar.
+In this example, the custom strings (NoEvents, NoSelectedDate) have been localised using the `SfGlobalLocalizations.delegate` in the `localizationsDelegate`. For localization, you need to add the supported locales to an array and using any one of the supported locales, you can set the locale for the calendar.
 
 For more details, you can refer to our UG documentation [Localization](https://help.syncfusion.com/flutter/calendar/localization)
 
